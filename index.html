@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Vijay 🤍</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #ffe6ee, #fffafc);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 22px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+}
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* Sparkles */
+.sparkle {
+    position: fixed;
+    font-size: 14px;
+    animation: sparkle 3s linear infinite;
+    opacity: 0.7;
+}
+@keyframes sparkle {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-60vh) scale(1); opacity: 0; }
+}
+
+/* Envelope */
+.envelope {
+    width: 320px;
+    height: 210px;
+    background: #ffb3c6;
+    margin: 160px auto;
+    position: relative;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+.envelope:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #ff8fab;
+    clip-path: polygon(0 0, 100% 0, 50% 60%);
+}
+.envelope-text {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+}
+.envelope small {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    color: white;
+    opacity: 0.9;
+}
+
+/* Letter */
+.letter {
+    display: none;
+    background: #fff;
+    max-width: 760px;
+    margin: 60px auto;
+    padding: 55px;
+    border-radius: 30px;
+    animation: fadeIn 2s ease, glow 3s ease-in-out infinite;
+}
+@keyframes glow {
+    0%,100% { box-shadow: 0 0 25px rgba(255,77,109,0.15); }
+    50% { box-shadow: 0 0 40px rgba(255,77,109,0.35); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: #ff4d6d;
+    margin-bottom: 30px;
+}
+.letter-content {
+    font-size: 19px;
+    line-height: 1.9;
+    color: #444;
+    text-align: left;
+    white-space: pre-line;
+    min-height: 300px;
+}
+.signature {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #ff4d6d;
+    text-align: right;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()">
+    <div class="envelope-text">For Vijay 🤍</div>
+    <small>(click to open)</small>
+</div>
+
+<div class="letter" id="letter">
+    <h1>Happy New Year, Vijay 🤍</h1>
+    <div class="letter-content" id="typedText"></div>
+    <div class="signature">— Always yours 🤍</div>
+</div>
+
+<script>
+const text = `Im really grateful to start this year with you. You’ve already become so important to me and Im excited to see where this year takes us. Im really glad its you.
+
+I dont really know how to explain it but with you, everything I was never sure about with anyone else just started to make sense. It’s only been a month and yet you’ve already become such an important part of my life. In such a short time you’ve made me smile more and feel happier in ways I honestly didn’t expect.
+I know choosing you so quickly was a big decision for me. It’s not something I usually do and I did question myself at times, wondering if I was doing the right thing. But the day I got to know your standards, I realized how serious you are about the person you choose and in that moment I knew I wanted to be that person for you.
+What I love most is how easy everything feels with you. There’s no pressure and no pretending, just comfort and understanding. I catch myself thinking about you randomly during the day, smiling for no reason, and that’s when I realize how much you’ve slowly started to mean to me.
+I know it’s only been a month, and I don’t know you completely yet but I want to. I want to know the real you. I want to understand you and learn the way you want to be loved. The closer I get to you the more I find myself liking you and that feeling just keeps growing.
+I don’t want you to be perfect. I just want you to be you the real and genuine you especially when you’re with me. And I know I annoy you sometimes… I honestly just find it cute to annoy you. I’m really sorry if I’ve ever annoyed you too much.
+
+I love you so much and I honestly can’t put it into words. All I know is that I want you and only you.`;
+
+let i = 0;
+function typeLetter() {
+    if (i < text.length) {
+        document.getElementById("typedText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeLetter, 35);
+    }
+}
+
+function openLetter() {
+    document.querySelector('.envelope').style.display = "none";
+    document.getElementById('letter').style.display = "block";
+    typeLetter();
+}
+
+/* Hearts */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (18 + Math.random() * 22) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+}, 300);
+
+/* Sparkles */
+setInterval(() => {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.innerHTML = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.bottom = "0px";
+    sparkle.style.animationDuration = (2 + Math.random() * 2) + "s";
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 4000);
+}, 700);
+</script>
+
+</body>
+</html>
